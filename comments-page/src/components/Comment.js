@@ -2,7 +2,8 @@ import React from 'react';
 import './Comment.css';
 
 //JSX
-const Comment = props => (
+const Comment = props => {
+
     <div className="Comment">
 
         <h2>{props.name}</h2>
@@ -11,6 +12,6 @@ const Comment = props => (
         <p>{props.dateNow.toString()}</p>
 
     </div>
-);
+};
 
 export default Comment;
