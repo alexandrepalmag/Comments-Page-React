@@ -37,7 +37,7 @@ class App extends Component {
 
     event.preventDefault();
 
-    const newComment = {...this.state.newComm, dateNow: new Date()};
+    const newComment = { ...this.state.newComm, dateNow: new Date() };
 
     /* let listComm = this.state.commentsList;
     listComm.push(newComment);
@@ -48,16 +48,26 @@ class App extends Component {
 
     this.setState({
 
-      commentsList: [...this.state.commentsList, newComment]
+      commentsList: [...this.state.commentsList, newComment],
+      newComm: { name: '', email: '', message: '' }
 
     })
 
   }
 
+  removeComment = comment => {
+
+    let list = this.state.commentsList;
+    list = list.filter(c => c !== comment);
+
+    this.setState({commentsList:list});
+
+  }
+
   typeInField = event => {
 
-    const {name, value} = event.target;
-    this.setState({ newComm : { ...this.state.newComm, [name]: value } });
+    const { name, value } = event.target;
+    this.setState({ newComm: { ...this.state.newComm, [name]: value } });
 
   }
 
@@ -74,6 +84,7 @@ class App extends Component {
               name={comm.name}
               email={comm.email}
               dateNow={comm.dateNow}
+              onRemove = {this.removeComment.bind(this,comm)}
             >
               {comm.message}
             </Comment>
