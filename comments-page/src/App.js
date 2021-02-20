@@ -37,14 +37,7 @@ class App extends Component {
 
     event.preventDefault();
 
-    const newComment = {
-
-      name: 'Jhon',
-      email: 'john@gmail.com',
-      dateNow: new Date(2020, 3, 19),
-      message: 'Hi, how are you?'
-
-    }
+    const newComment = {...this.state.newComm, dateNow: new Date()};
 
     /* let listComm = this.state.commentsList;
     listComm.push(newComment);
@@ -64,7 +57,7 @@ class App extends Component {
   typeInField = event => {
 
     const {name, value} = event.target;
-    this.setState({ newComm: { ...this.state.newComm, [name]: value } });
+    this.setState({ newComm : { ...this.state.newComm, [name]: value } });
 
   }
 
@@ -93,7 +86,7 @@ class App extends Component {
           <div>
             <input
               type="text"
-              name="yourName"
+              name="name"
               value={this.state.newComm.name}
               onChange={this.typeInField}
               placeholder="Type Your Name" />
@@ -101,7 +94,7 @@ class App extends Component {
           <div>
             <input
               type="email"
-              name="yourEmail"
+              name="email"
               value={this.state.newComm.email}
               onChange={this.typeInField}
               placeholder="Type Your e-mail" />
